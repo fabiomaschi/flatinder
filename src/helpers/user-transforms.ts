@@ -9,7 +9,7 @@ export function UserTransformToApplicant (user: User): ApplicantProfile {
     name: user.name,
     profileImage: user.profileImage,
     gender: user.applicantProfile.applicantGender,
-    birthday: user.applicantProfile.applicantBirthday,
+    age: user.applicantProfile.applicantAge,
     smoker: user.applicantProfile.applicantSmoker,
     occupation: user.applicantProfile.applicantOccupation,
     description: user.applicantProfile.description,

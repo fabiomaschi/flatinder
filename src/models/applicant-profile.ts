@@ -10,7 +10,7 @@ export interface ApplicantProfile {
   profileImage: string
   // attributes
   gender: Gender
-  birthday: Date
+  age: number
   smoker: Boolean
   occupation: Occupation
   description: string
