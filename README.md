@@ -4,8 +4,14 @@
 make infra-up
 ```
 
-build, start:
+Build:
+
 ```
 npm run build
-npm run start
+```
+
+Start both server & front-end app:
+
+```
+npm start
 ```
