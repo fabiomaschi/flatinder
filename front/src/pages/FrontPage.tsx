@@ -1,3 +1,4 @@
+import React from 'react'
 import React, { useEffect, useState } from 'react'
 import TinderCard from 'react-tinder-card'
 import { Button, Card, Icon, Image } from 'semantic-ui-react'

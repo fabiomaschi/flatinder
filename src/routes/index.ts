@@ -18,4 +18,9 @@ router.put('/flats/:email', controllers.users.updateFlat)
 router.get('/flat-feed', controllers.feedFlats.get)
 router.get('/applicant-feed', controllers.feedApplicants.get)
 
+router.post('/like', controllers.matchDecisions.like)
+router.post('/pass', controllers.matchDecisions.pass)
+
+router.get('/matches', controllers.matchDecisions.listAll)
+
 export const routes = router.routes()
