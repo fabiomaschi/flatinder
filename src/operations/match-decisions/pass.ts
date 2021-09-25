@@ -1,8 +1,8 @@
-import { MatchDecision } from '@app/database/entities'
-import { MatchDecisionRepository } from '@app/database/repositories/match-decision-repository'
+import { MatchDecision } from '../../database/entities'
+import { MatchDecisionRepository } from '../../database/repositories/match-decision-repository'
 import { getCustomRepository } from 'typeorm'
-import { UserRepository } from '@app/database/repositories/user'
-import { UserRole } from '@app/database/entities/user'
+import { UserRepository } from '../../database/repositories/user'
+import { UserRole } from '../../database/entities/user'
 
 interface PassInput {
   initiatorRole: UserRole

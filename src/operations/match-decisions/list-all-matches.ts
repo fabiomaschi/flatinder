@@ -15,7 +15,11 @@ export interface ListAllMatchesOutput {
 export async function ListAllMatches (input: ListAllMatchesInput): Promise<ListAllMatchesOutput> {
   const user = await GetUser({ email: input.email })
 
-  let where:any  = { }
+  let where: any = {
+    flatLiked: true,
+    applicantLiked: true,
+  }
+
   switch (user.role) {
     case UserRole.APPLICANT:
       where.applicantProfile = user.applicantProfile
