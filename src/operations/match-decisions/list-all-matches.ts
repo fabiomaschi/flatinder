@@ -22,10 +22,10 @@ export async function ListAllMatches (input: ListAllMatchesInput): Promise<ListA
 
   switch (user.role) {
     case UserRole.APPLICANT:
-      where.applicantProfile = user.applicantProfile
+      where.applicant = user.applicantProfile
       break
     case UserRole.FLAT:
-      where.flatProfile = user.flatProfile
+      where.flat = user.flatProfile
       break
   }
 
