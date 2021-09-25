@@ -2,7 +2,7 @@ version: '2.4'
 
 services:
   database:
-    image: postgres:11.4-alpine
+    image: postgis/postgis
     container_name: flatinder-database
     environment:
       - POSTGRES_PASSWORD=postgres

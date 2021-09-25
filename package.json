@@ -13,6 +13,7 @@
     "url": "git+https://github.com/fabiomaschi/flatinder.git"
   },
   "dependencies": {
+    "@types/geojson": "^7946.0.8",
     "kcors": "^2.2.2",
     "koa": "^2.13.3",
     "koa-body": "^4.2.0",
