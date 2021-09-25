@@ -1,12 +1,17 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Menu } from "semantic-ui-react";
+import { Image, Menu } from "semantic-ui-react";
+import { AppLogo } from "../assets";
 
 const Navbar = (props: any) => {
   // TODO add actual own id
   const id = 1;
   return (
-    <Menu>
+    <Menu style={{ marginBottom: 0 }}>
+      <Menu.Item>
+        <Image src={AppLogo} size={"tiny"} />
+      </Menu.Item>
+
       <Menu.Item as={NavLink} exact to={"/feed"} name={"feed"}>
         Feed
       </Menu.Item>
