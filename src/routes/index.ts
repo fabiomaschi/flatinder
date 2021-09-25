@@ -15,6 +15,7 @@ router.post('/flats', controllers.users.createFlat)
 router.get('/flats/:id', controllers.users.getFlat)
 router.put('/flats/:id', controllers.users.updateFlat)
 
-router.get('/feed', controllers.feed.get)
+router.get('/flat-feed', controllers.feedFlats.get)
+router.get('/applicant-feed', controllers.feedApplicants.get)
 
 export const routes = router.routes()
