@@ -3,6 +3,7 @@ import * as compose from 'koa-compose'
 import { UserRole } from '../database/entities/user'
 import { Like } from '../operations/match-decisions/like'
 import { Pass } from '../operations/match-decisions/pass'
+import { ListAllMatches } from '../operations/match-decisions/list-all-matches'
 import { GetUser } from '../operations/users/get'
 
 export const like = compose([
@@ -56,5 +57,12 @@ export const pass = compose([
     })
 
     ctx.created(matchDecision)
+  }
+])
+
+export const listAll = compose([
+  async (ctx: Context) => {
+    const matches = await ListAllMatches({ email: String(ctx.headers.initiator) })
+    ctx.ok(matches)
   }
 ])
