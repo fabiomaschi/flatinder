@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import ApplicantProfile from "./pages/ApplicantProfile";
+import { ApplicantProfilePage, FrontPage } from "./pages";
 import "./App.css";
 import "semantic-ui-css/semantic.min.css";
 
@@ -8,7 +8,12 @@ function App() {
     <Router>
       <div className={"App"}>
         <Switch>
-          <Route exact path={"/user/:id"} render={() => <ApplicantProfile />} />
+          <Route exact path={"/"} render={() => <FrontPage />} />
+          <Route
+            exact
+            path={"/user/:id"}
+            render={() => <ApplicantProfilePage />}
+          />
         </Switch>
       </div>
     </Router>
