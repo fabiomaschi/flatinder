@@ -2,31 +2,40 @@ import { MatchDecision } from '@app/database/entities'
 import { MatchDecisionRepository } from '@app/database/repositories/match-decision-repository'
 import { getCustomRepository } from 'typeorm'
 import { UserRepository } from '@app/database/repositories/user'
-import { FlatProfileRepository } from '@app/database/repositories/flat-profile'
+import { UserRole } from '@app/database/entities/user'
 
-interface OperationInput {
-  initiator: number //id of the initiator of the like, important for actually writing down the like
+interface LikeInput {
+  initiatorRole: UserRole
   applicantId: number
   flatId: number
-  
 }
 
-export const Like = async (input: OperationInput): Promise<MatchDecision> => {
+export async function Like (input: LikeInput): Promise<MatchDecision> {
   const repo = getCustomRepository(MatchDecisionRepository)
-  const userRepo = getCustomRepository(UserRepository)
-  const applicant = await userRepo.findOne(input.applicantId)
-  const flat = await getCustomRepository(FlatProfileRepository).findOne(input.flatId)
-  let decision = await repo.find({ where: { applicant: input.applicantId, flat: input.flatId } });
-  if (!decision) {
-      decision = new MatchDecision()
-      decision.applicant = applicant.applicantProfile
-      decision.flat = flat.FlatProfile
+  const applicant = await getCustomRepository(UserRepository).findOne(input.applicantId)
+  const flat = await getCustomRepository(UserRepository).findOne(input.flatId)
+
+  if (flat === undefined || applicant === undefined) {
+    throw new Error('Profiles not found')
   }
-  if (input.initiator == input.applicantId){
-    decision.applicantLiked = true
-  } else {
-    decision.flatLiked = true 
+
+  
+  const decision = await repo.findOneOrFail({ where: { applicant: input.applicantId, flat: input.flatId } })
+    .catch(() => {
+      const interim = new MatchDecision()
+      interim.applicant = applicant.applicantProfile
+      interim.flat = flat.flatProfile
+      return interim
+    })
+
+  switch (input.initiatorRole) {
+    case UserRole.APPLICANT:
+      decision.applicantLiked = true
+      break
+    case UserRole.FLAT:
+      decision.flatLiked = true
+      break
   }
-  repo.save(decision)
-  return decision
+
+  return await repo.save(decision)
 }
