@@ -47,7 +47,7 @@ export const createApplicant = compose([
 
 export const getApplicant = compose([
   async (ctx: Context) => {
-    const user = await GetUser({ email: String(ctx.params.id) })
+    const user = await GetUser({ email: String(ctx.params.email) })
     ctx.ok(user)
   }
 ])
@@ -120,7 +120,7 @@ export const createFlat = compose([
 
 export const getFlat = compose([
   async (ctx: Context) => {
-    const user = await GetUser({ email: String(ctx.params.id) })
+    const user = await GetUser({ email: String(ctx.params.email) })
     ctx.ok(user)
   }
 ])
