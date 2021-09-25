@@ -6,7 +6,9 @@
   "scripts": {
     "build": "tsc",
     "start": "node . & cd front && PORT=4000 react-scripts start",
-    "go": "npm run build && npm run start"
+    "go": "npm run build && npm run start",
+    "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
+    "back": "node ."
   },
   "repository": {
     "type": "git",
@@ -23,14 +25,17 @@
     "pg": "^8.7.1",
     "ramda": "^0.27.1",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.37"
+    "typeorm": "^0.2.37",
+    "typeorm-seeding": "^1.6.1"
   },
   "devDependencies": {
+    "@types/faker": "^5.5.8",
     "@types/kcors": "^2.2.5",
     "@types/koa": "^2.13.4",
     "@types/koa-router": "^7.4.4",
     "@types/node": "^16.9.6",
     "@types/ramda": "^0.27.44",
+    "react-scripts": "^4.0.3",
     "typescript": "^4.4.3"
   }
 }

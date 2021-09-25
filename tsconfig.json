@@ -29,8 +29,7 @@
         "@models/*": ["src/database/models/*"],
         "@repositories/*": ["src/database/repositories/*"],
         "@operations/*": ["src/operations/*"],
-        "@services/*": ["src/services/*"],
-  
+        "@services/*": ["src/services/*"] 
       },
       "typeRoots": [ "node_modules/@types", "@types" ]
     },
@@ -39,4 +38,3 @@
       "@types"
     ]
   }
-  

@@ -25,7 +25,7 @@ export class ApplicantProfile {
     applicantBirthday: Date;
 
     @Column()
-    applicantSmoker: Boolean;
+    applicantSmoker: boolean;
 
     @Column({
         type: "enum",
@@ -44,24 +44,24 @@ export class ApplicantProfile {
     flatLocationCenter: Geometry;
 
     @Column()
-    flatLocationRadius: Number;
+    flatLocationRadius: number;
 
     @Column()
-    flatMaxPrice: Number;
+    flatMaxPrice: number;
 
     @Column()
-    flatMinPeople: Number
+    flatMinPeople: number
 
     @Column()
-    flatMaxPeople: Number
+    flatMaxPeople: number
 
     @Column({
         nullable: true,
     })
-    roomHasOwnBathroom: Boolean
+    roomHasOwnBathroom?: boolean
 
     @Column({
         nullable: true,
     })
-    smokingFlat: Boolean;
+    smokingFlat?: boolean;
 }
