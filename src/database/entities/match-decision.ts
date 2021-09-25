@@ -22,12 +22,12 @@ export class MatchDecision {
     @Column({
         nullable: true,
     })
-    flatLiked: Boolean;
+    flatLiked: boolean;
 
     @Column({
         nullable: true,
     })
-    applicantLiked: Boolean;
+    applicantLiked: boolean;
 
     @Column()
     score: number;

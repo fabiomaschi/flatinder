@@ -7,5 +7,5 @@ export {
     User,
     ApplicantProfile,
     FlatProfile,
-    MatchDecision
+    MatchDecision,
 }
