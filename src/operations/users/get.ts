@@ -6,7 +6,7 @@ export interface GetUserInput {
   email: string
 }
 
-export async function GetUser (input: GetUserInput): Promise<Secret> {
+export async function GetUser (input: GetUserInput): Promise<User> {
   const repo = getCustomRepository(UserRepository)
   const user = await repo.findOne(input.email)
 
