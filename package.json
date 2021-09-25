@@ -7,7 +7,8 @@
     "build": "tsc",
     "start": "node . & cd front && PORT=4000 react-scripts start",
     "go": "npm run build && npm run start",
-    "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed"
+    "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
+    "back": "node ."
   },
   "repository": {
     "type": "git",
