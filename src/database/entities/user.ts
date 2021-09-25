@@ -31,10 +31,10 @@ export class User {
     })
     role: UserRole;
 
-    @OneToOne(() => FlatProfile, profile => profile.user)
+    @OneToOne(() => FlatProfile, profile => profile.user, {eager: true})
     flatProfile: FlatProfile;
 
-    @OneToOne(() => ApplicantProfile, profile => profile.user)
+    @OneToOne(() => ApplicantProfile, profile => profile.user, {eager: true})
     applicantProfile: ApplicantProfile;
 
 }
