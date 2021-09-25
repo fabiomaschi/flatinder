@@ -1,0 +1,31 @@
+{
+  "devDependencies": {
+    "@types/kcors": "^2.2.5",
+    "@types/koa": "^2.13.4",
+    "@types/koa-router": "^7.4.4",
+    "@types/ramda": "^0.27.44",
+    "typescript": "^4.4.3"
+  },
+  "name": "flatinder",
+  "description": "",
+  "version": "1.0.0",
+  "main": "dist/app.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabiomaschi/flatinder.git"
+  },
+  "dependencies": {
+    "kcors": "^2.2.2",
+    "koa": "^2.13.3",
+    "koa-body": "^4.2.0",
+    "koa-compose": "^4.1.0",
+    "koa-respond": "^2.1.0",
+    "koa-router": "^10.1.1",
+    "pg": "^8.7.1",
+    "ramda": "^0.27.1",
+    "typeorm": "^0.2.37"
+  }
+}
