@@ -1,17 +1,12 @@
 {
-  "devDependencies": {
-    "@types/kcors": "^2.2.5",
-    "@types/koa": "^2.13.4",
-    "@types/koa-router": "^7.4.4",
-    "@types/ramda": "^0.27.44",
-    "typescript": "^4.4.3"
-  },
   "name": "flatinder",
   "description": "",
   "version": "1.0.0",
   "main": "dist/app.js",
   "scripts": {
-    "start": "node ."
+    "build": "tsc",
+    "start": "node .",
+    "go": "npm run build && npm run start"
   },
   "repository": {
     "type": "git",
@@ -26,6 +21,15 @@
     "koa-router": "^10.1.1",
     "pg": "^8.7.1",
     "ramda": "^0.27.1",
+    "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.37"
+  },
+  "devDependencies": {
+    "@types/kcors": "^2.2.5",
+    "@types/koa": "^2.13.4",
+    "@types/koa-router": "^7.4.4",
+    "@types/node": "^16.9.6",
+    "@types/ramda": "^0.27.44",
+    "typescript": "^4.4.3"
   }
 }

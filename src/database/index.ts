@@ -10,7 +10,13 @@ class Database {
         this.connection = await createConnection({
             type: 'postgres',
             url: config.database.connection,
+            port: 5432,
+            username: 'postgres',
+            password: 'postgres',
+            database: 'postgres',
             entities: values(entities),
+            synchronize: true,
+            logging: true
         })
 
         return this.connection;
