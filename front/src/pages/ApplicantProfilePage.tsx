@@ -1,4 +1,12 @@
-import { Container, Header, Image } from "semantic-ui-react";
+import {
+  Container,
+  Divider,
+  Grid,
+  Header,
+  Icon,
+  Image,
+  Statistic,
+} from "semantic-ui-react";
 import { CoverImg, DemoUser } from "../assets";
 
 const style = {
@@ -8,10 +16,9 @@ const style = {
     backgroundSize: "cover",
   },
   profileImageContainer: {
-    marginTop: "-100px",
     height: "200px",
     width: "200px",
-    margin: "0 auto",
+    margin: "-100px auto 0 auto",
   },
   profileImage: {
     height: "100%",
@@ -21,6 +28,26 @@ const style = {
 };
 
 const ApplicantProfilePage = () => {
+  interface StatsType {
+    label: string;
+    value: string | number;
+    description?: string;
+  }
+  // TODO replace with data from API
+  const stats: StatsType[] = [
+    {
+      label: "years old",
+      value: 21,
+    },
+    {
+      label: "max budget",
+      value: "800 CHF",
+    },
+    {
+      label: "languages",
+      value: 3,
+    },
+  ];
   return (
     <Container fluid>
       <div style={style.coverContainer} />
@@ -33,6 +60,25 @@ const ApplicantProfilePage = () => {
         />
       </div>
       <Header as="h1">User Name</Header>
+      <p>
+        <Icon name={"point"} color={"teal"} />
+        Zürich, CH
+      </p>
+      <Divider hidden />
+      <Grid columns={3} divided>
+        <Grid.Row>
+          {stats.map(({ label, value }: StatsType) => (
+            <Grid.Column>
+              <Statistic
+                label={label}
+                value={value}
+                size={"tiny"}
+                color={"teal"}
+              />
+            </Grid.Column>
+          ))}
+        </Grid.Row>
+      </Grid>
     </Container>
   );
 };
