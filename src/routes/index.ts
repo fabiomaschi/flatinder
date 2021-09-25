@@ -5,10 +5,15 @@ const router = new Router()
 
 router.get('/status', controllers.status.get)
 
-router.get('/users', controllers.users.listAll)
-router.post('/users', controllers.users.create)
-router.get('/users/:id', controllers.users.get)
-router.put('/users/:id', controllers.users.update)
+router.get('/applicants', controllers.users.listAllApplicants)
+router.post('/applicants', controllers.users.createApplicant)
+router.get('/applicants/:id', controllers.users.getApplicant)
+router.put('/applicants/:id', controllers.users.updateApplicant)
+
+router.get('/flats', controllers.users.listAllFlats)
+router.post('/flats', controllers.users.createFlat)
+router.get('/flats/:id', controllers.users.getFlat)
+router.put('/flats/:id', controllers.users.updateFlat)
 
 router.get('/feed', controllers.feed.get)
 
