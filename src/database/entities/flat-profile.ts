@@ -2,7 +2,7 @@ import {Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn} from "type
 import {Gender} from "./gender"
 import {Occupation} from "./occupation"
 import {User} from "./user"
-import { Geometry } from 'geojson'
+import {Geometry} from 'geojson'
 
 
 @Entity()
@@ -25,22 +25,22 @@ export class FlatProfile {
     flatLocation: Geometry;
 
     @Column()
-    pricePerMonth: Number;
+    pricePerMonth: number;
 
     @Column()
-    numberOfMaleFlatmates: Number;
+    numberOfMaleFlatmates: number;
 
     @Column()
-    numberOfFemaleFlatmates: Number;
+    numberOfFemaleFlatmates: number;
 
     @Column()
-    youngestFlatmateAge: Number;
+    youngestFlatmateAge: number;
     
     @Column()
-    oldestFlatmateAge: Number;
+    oldestFlatmateAge: number;
 
     @Column()
-    smokingFlat: Boolean;
+    smokingFlat: boolean;
 
     @Column({
         type: "enum",
@@ -50,10 +50,10 @@ export class FlatProfile {
     flatOccupation: Occupation;
 
     @Column()
-    roomSize: Number;
+    roomSize: number;
 
     @Column()
-    roomHasOwnBathroom: Boolean;
+    roomHasOwnBathroom: boolean;
 
     @Column()
     flatDescription: string;
@@ -62,27 +62,28 @@ export class FlatProfile {
     // preferences:
 
     @Column()
-    applicantAgeMin: Number;
+    applicantAgeMin: number;
 
     @Column()
-    applicantAgeMax: Number;
+    applicantAgeMax: number;
 
     @Column({
         type: "enum",
         enum: Gender,
+        nullable: true,
     })
-    applicantGender: Gender;
+    applicantGender?: Gender;
 
     @Column({
         nullable: true,
     })
-    applicantSmoker: Boolean;
+    applicantSmoker?: boolean;
 
     @Column({
         type: "enum",
         enum: Occupation,
         nullable: true,
     })
-    applicantOccupation: Occupation;
+    applicantOccupation?: Occupation;
     
 }

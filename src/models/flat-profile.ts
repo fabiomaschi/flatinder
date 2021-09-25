@@ -25,8 +25,8 @@ export interface FlatProfile {
   preferences: {
     applicantAgeMin: Number
     applicantAgeMax: Number
-    applicantGender: Gender
-    applicantSmoker: Boolean
-    applicantOccupation: Occupation
+    applicantGender?: Gender
+    applicantSmoker?: Boolean
+    applicantOccupation?: Occupation
   }
 }
