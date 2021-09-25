@@ -1,5 +1,6 @@
 import { Context } from 'koa'
 import * as compose from 'koa-compose'
+import { UserRole } from '../database/entities/user.ts'
 import { ListAllUsers } from '../operations/users/list-all'
 import { CreateUser } from '../operations/users/create'
 import { GetUser } from '../operations/users/get'
@@ -14,7 +15,12 @@ export const listAll = compose([
 
 export const create = compose([
   async (ctx: Context) => {
-    const user = await CreateUser({})
+    const user = await CreateUser({
+      email: String(ctx.body.email),
+      role: UserRole(ctx.body.role),
+      flatProfile: {},
+      applicantProfile: {}
+    })
     ctx.created(user)
   }
 ])
@@ -28,7 +34,9 @@ export const get = compose([
 
 export const update = compose([
   async (ctx: Context) => {
-    const user = await UpdateUser({})
+    const user = await UpdateUser({
+      email: String(ctx.body.email)
+    })
     ctx.ok(user)
   }
 ])
