@@ -13,3 +13,12 @@ services:
     volumes:
       # - ./.db/data:/var/lib/postgresql/data:z
       - ./.db/init:/docker-entrypoint-initdb.d
+
+  node:
+    depends_on:
+      - database
+    build: docker/node
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/app
