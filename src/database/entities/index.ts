@@ -1,5 +1,11 @@
-import { Secret } from './secret'
+import {User} from './user'
+import {ApplicantProfile} from './applicant-profile'
+import {FlatProfile} from './flat-profile'
+import {MatchDecision} from './match-decision'
 
 export {
-    Secret
+    User,
+    ApplicantProfile,
+    FlatProfile,
+    MatchDecision
 }

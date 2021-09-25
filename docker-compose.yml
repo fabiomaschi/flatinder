@@ -2,7 +2,7 @@ version: '2.4'
 
 services:
   database:
-    image: postgres:11.4-alpine
+    image: postgis/postgis
     container_name: flatinder-database
     environment:
       - POSTGRES_PASSWORD=postgres
@@ -13,3 +13,17 @@ services:
     volumes:
       # - ./.db/data:/var/lib/postgresql/data:z
       - ./.db/init:/docker-entrypoint-initdb.d
+
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+
+  node:
+    depends_on:
+      - database
+    build: docker/node
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/app
