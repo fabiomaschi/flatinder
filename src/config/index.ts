@@ -3,6 +3,6 @@ export const config = {
         port: 3000,
     },
     database: {
-        connection: 'postgres://postgres:postgres@localhost:5432/flatinder-development'
+        connection: 'postgres://postgres:postgres@localhost:5432/postgres'
     }
 }

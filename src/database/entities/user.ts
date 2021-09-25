@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToOne} from "typeorm"
+import {Entity, PrimaryGeneratedColumn, Column, OneToOne, Unique} from "typeorm"
 import {FlatProfile} from "./flat-profile"
 import {ApplicantProfile} from "./applicant-profile"
 
@@ -10,6 +10,7 @@ export enum UserRole {
 
 
 @Entity()
+@Unique(['email'])
 export class User {
 
     @PrimaryGeneratedColumn()
@@ -20,6 +21,9 @@ export class User {
 
     @Column()
     name: string;
+
+    @Column()
+    profileImage: string;
 
     @Column({
         type: "enum",
