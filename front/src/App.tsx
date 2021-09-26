@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "semantic-ui-css/semantic.min.css";
-import { ApplicantProfilePage, FrontPage } from "./pages";
+import { ApplicantProfilePage, FlatProfilePage, FrontPage } from "./pages";
 import "./App.css";
 import { Navbar } from "./components";
 
@@ -18,6 +18,7 @@ function App() {
             path={"/user/:id"}
             render={() => <ApplicantProfilePage />}
           />
+          <Route exact path={"/flat/:id"} render={() => <FlatProfilePage />} />
         </Switch>
       </div>
     </Router>
