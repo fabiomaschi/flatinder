@@ -1,5 +1,5 @@
-import React from 'react'
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import TinderCard from 'react-tinder-card'
 import { Button, Card, Icon, Image } from 'semantic-ui-react'
 import { api } from '../api'
@@ -56,7 +56,9 @@ const db: Array<Profile> = [
 const alreadyRemoved: Array<Number>= []
 
 function FrontPage (): JSX.Element {
-  const [profiles, setProfiles] = useState<Profile[]>(db)
+  const [profiles, 
+    // setProfiles
+  ] = useState<Profile[]>(db)
   const [counter, setCounter] = useState<number>(0)
 
   const fetchData = React.useCallback(() => {
@@ -67,7 +69,9 @@ function FrontPage (): JSX.Element {
         })
         setProfiles(response.data.applicants)
       })*/
-  }, [setProfiles])
+  }, [
+    // setProfiles
+  ])
 
   useEffect(() => {
     fetchData()
@@ -116,10 +120,10 @@ function FrontPage (): JSX.Element {
                 </Card.Description>
               </Card.Content>
               <Card.Content extra>
-                <a>
+                <Link to={'#'}>
                   <Icon name='user' />
                     {profile.occupation}
-                </a>
+                </Link>
               </Card.Content>
               <Card.Content extra>
                 <div className='ui two buttons'>
