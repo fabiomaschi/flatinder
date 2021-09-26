@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import TinderCard from 'react-tinder-card'
-import { Button, Card, Icon, Image } from 'semantic-ui-react'
+import { Button, Card, Icon, Image, Statistic } from 'semantic-ui-react'
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+import SchoolIcon from '@mui/icons-material/School';
+import SmokingRoomsIcon from '@mui/icons-material/SmokingRooms';
+import SmokeFreeIcon from '@mui/icons-material/SmokeFree';
+
 import { api } from '../api'
 import './index.css'
 
@@ -14,10 +19,10 @@ interface Profile {
   // attributes
   gender: string
   birthday: string
-  //smoker: Boolean
+  smoker: Boolean
   occupation: string
   description: string
-  /*// preferences
+  // preferences
   preferences : {
     flatLocationRadius: Number,
     flatMaxPrice: Number,
@@ -25,10 +30,10 @@ interface Profile {
     flatMaxPeople: Number,
     roomHasOwnBathroom?: Boolean,
     smokingFlat?: Boolean
-  }*/
+  }
 }
 
-const db: Array<Profile> = [
+/*const db: Array<Profile> = [
   {
     id: 0,
     email: 'lala@lala.com',
@@ -49,42 +54,36 @@ const db: Array<Profile> = [
     occupation: 'Worker',
     description: 'Ma oeeeeeeee'
   }
-]
+]*/
 
 
 
-const alreadyRemoved: Array<Number>= []
+// const alreadyRemoved: Array<string>= []
 
 function FrontPage (): JSX.Element {
-  const [profiles, 
-    // setProfiles
-  ] = useState<Profile[]>(db)
+  const [profiles, setProfiles] = useState<Profile[]>([])
   const [counter, setCounter] = useState<number>(0)
 
   const fetchData = React.useCallback(() => {
-    /*api.get(`/flat-feed`)
+    api.get(`/applicants/`)
       .then(response => {
         console.log(response)
-        /*response.data.applicants.map((profile: Profile) => {
-        })
         setProfiles(response.data.applicants)
-      })*/
-  }, [
-    // setProfiles
-  ])
+      })
+  }, [setProfiles])
 
   useEffect(() => {
     fetchData()
   }, [fetchData])
 
   
-  function swiped (direction: string, id: number): void {
+  function swiped (direction: string, email: string): void {
     switch(direction) {
       case 'left':
-        api.post(`/pass/${profiles[id].email}`)
+        api.post(`/pass/${email}`)
         break
       case 'right':
-        api.post(`/like/${profiles[id].id}`)
+        api.post(`/like/${email}`)
           .then(response => {
             console.log(response)
           })
@@ -94,8 +93,8 @@ function FrontPage (): JSX.Element {
         }
         break
     }
-    console.log('removing ' + id)
-    alreadyRemoved.push(id)
+    console.log('removing ' + email)
+    //alreadyRemoved.push(id)
   }
 
   function onCardLeftScreen (id: number): void {
@@ -107,12 +106,29 @@ function FrontPage (): JSX.Element {
     <div>
       <div className='cardContainer'>
         {profiles.map((profile, index) =>
-          <TinderCard key={profile.id} onSwipe={(dir) => swiped(dir, profile.id)} onCardLeftScreen={() => onCardLeftScreen(profile.id)} preventSwipe={['up', 'down']}>
+          <TinderCard key={profile.id} onSwipe={(dir) => swiped(dir, profile.email)} onCardLeftScreen={() => onCardLeftScreen(profile.id)} preventSwipe={['up', 'down']}>
             <Card>
               <Image src={profile.profileImage} wrapped ui={false} />
               <Card.Content>
                 <Card.Header>{profile.name}</Card.Header>
                 <Card.Meta>
+                  <Statistic.Group size='small'>
+                    <Statistic>
+                      <Statistic.Value>{profile.preferences.flatMaxPrice}$</Statistic.Value>
+                      <Statistic.Label>Budget</Statistic.Label>
+                    </Statistic>
+                    <Statistic>
+                      <Statistic.Value>{profile.preferences.flatMaxPeople}</Statistic.Value>
+                      <Statistic.Label>Max people</Statistic.Label>
+                    </Statistic>
+                    <Statistic>
+                      <Statistic.Value>{(profile.smoker) ? <SmokingRoomsIcon fontSize="large" /> : <SmokeFreeIcon fontSize="large" />}</Statistic.Value>
+                    </Statistic>
+                    <Statistic>
+                      <Statistic.Value>{(profile.occupation !== 'working') ? <SchoolIcon fontSize="large" /> : <BusinessCenterIcon fontSize="large"/>}</Statistic.Value>
+                      <Statistic.Label>Occupation</Statistic.Label>
+                    </Statistic>
+                  </Statistic.Group>
                   <span className='date'>{profile.gender} - {profile.birthday}</span>
                 </Card.Meta>
                 <Card.Description>
