@@ -13,10 +13,10 @@ export class MatchDecision {
     @CreateDateColumn()
     createdAt: Date;
 
-    @ManyToOne(() => FlatProfile, {nullable: false})
+    @ManyToOne(() => FlatProfile, {nullable: false, eager: true})
     flat: FlatProfile;
 
-    @ManyToOne(() => ApplicantProfile, {nullable: false})
+    @ManyToOne(() => ApplicantProfile, {nullable: false, eager: true})
     applicant: ApplicantProfile;
 
     @Column({

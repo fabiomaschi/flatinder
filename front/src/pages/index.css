@@ -1,0 +1,3 @@
+.ui.card { width: unset }
+.cardContainer { position: relative }
+.ui.card { position: absolute; top: 0 }

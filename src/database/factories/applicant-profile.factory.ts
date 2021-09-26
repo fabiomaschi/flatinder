@@ -8,7 +8,7 @@ import { Occupation } from '../entities/occupation'
 define(ApplicantProfile, (faker: typeof Faker) => {
   const applicant = new ApplicantProfile()
   applicant.applicantGender = faker.random.arrayElement([Gender.FEMALE, Gender.MALE])
-  applicant.applicantBirthday = faker.date.past()
+  applicant.applicantAge = faker.random.number({min:18,max:55})
   applicant.applicantSmoker = faker.random.boolean()
   applicant.applicantOccupation = faker.random.arrayElement([Occupation.STUDENT, Occupation.WORKING])
   applicant.description = faker.lorem.paragraph()

@@ -4,7 +4,7 @@ import { GetFeedFlats } from '../operations/feed-flats/get'
 
 export const get = compose([
   async (ctx: Context) => {
-    const feed = await GetFeedFlats({})
+    const feed = await GetFeedFlats({flatEmail:String(ctx.params.flatEmail)})
     ctx.ok(feed)
   }
 ])

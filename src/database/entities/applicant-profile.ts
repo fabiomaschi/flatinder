@@ -22,7 +22,7 @@ export class ApplicantProfile {
     applicantGender: Gender;
 
     @Column()
-    applicantBirthday: Date;
+    applicantAge: number;
 
     @Column()
     applicantSmoker: boolean;
