@@ -1,13 +1,15 @@
 import { getCustomRepository, Between } from 'typeorm'
 import { UserRepository } from '../../database/repositories/user'
-import { User, UserRole } from '../../database/entities/user'
+import { UserRole } from '../../database/entities/user'
+import { UserTransformToApplicant } from '../../helpers/user-transforms'
+import { ApplicantProfile } from '../../models/applicant-profile'
 
 export interface GetFeedFlatsInput {
   flatEmail: String
 }
 
 export interface GetFeedFlatsOutput {
-  feed: Array<User>
+  feed: Array<ApplicantProfile>
 }
 
 export async function GetFeedFlats (input: GetFeedFlatsInput): Promise<GetFeedFlatsOutput> {
@@ -39,5 +41,5 @@ export async function GetFeedFlats (input: GetFeedFlatsInput): Promise<GetFeedFl
     relations: ["applicantProfile"],
   })
   console.log(applicants)
-  return {feed:applicants}
+  return {feed: applicants.map(appli => UserTransformToApplicant(appli))}
 } 
