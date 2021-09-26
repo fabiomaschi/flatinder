@@ -123,6 +123,7 @@ function FrontPage (): JSX.Element {
                     </Statistic>
                     <Statistic>
                       <Statistic.Value>{(profile.smoker) ? <SmokingRoomsIcon fontSize="large" /> : <SmokeFreeIcon fontSize="large" />}</Statistic.Value>
+                      <Statistic.Label>Cigarrets</Statistic.Label>
                     </Statistic>
                     <Statistic>
                       <Statistic.Value>{(profile.occupation !== 'working') ? <SchoolIcon fontSize="large" /> : <BusinessCenterIcon fontSize="large"/>}</Statistic.Value>
