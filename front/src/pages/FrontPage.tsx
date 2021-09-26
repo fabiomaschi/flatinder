@@ -14,10 +14,10 @@ interface Profile {
   // attributes
   gender: string
   birthday: string
-  //smoker: Boolean
+  smoker: Boolean
   occupation: string
   description: string
-  /*// preferences
+  // preferences
   preferences : {
     flatLocationRadius: Number,
     flatMaxPrice: Number,
@@ -25,10 +25,10 @@ interface Profile {
     flatMaxPeople: Number,
     roomHasOwnBathroom?: Boolean,
     smokingFlat?: Boolean
-  }*/
+  }
 }
 
-const db: Array<Profile> = [
+/*const db: Array<Profile> = [
   {
     id: 0,
     email: 'lala@lala.com',
@@ -49,7 +49,7 @@ const db: Array<Profile> = [
     occupation: 'Worker',
     description: 'Ma oeeeeeeee'
   }
-]
+]*/
 
 
 
@@ -59,14 +59,16 @@ function FrontPage (): JSX.Element {
   const [profiles, 
     // setProfiles
   ] = useState<Profile[]>(db)
+
   const [counter, setCounter] = useState<number>(0)
 
   const fetchData = React.useCallback(() => {
-    /*api.get(`/flat-feed`)
+    api.get(`/flat-feed/Haylie.Heller91@hotmail.com`)
       .then(response => {
-        console.log(response)
-        /*response.data.applicants.map((profile: Profile) => {
+        // console.log(response.data)
+        response.data.feed.map((profile: Profile) => {
         })
+
         setProfiles(response.data.applicants)
       })*/
   }, [
